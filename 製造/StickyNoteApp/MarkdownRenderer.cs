@@ -21,9 +21,9 @@ public static class MarkdownRenderer
 
     public static IEnumerable<Inline> Render(
         string markdown,
-        FontFamily fontFamily,
+        System.Windows.Media.FontFamily fontFamily,
         double fontSize,
-        Brush fontColor)
+        System.Windows.Media.Brush fontColor)
     {
         markdown ??= string.Empty;
         var lines = markdown.Replace("\r\n", "\n").Split('\n');
@@ -44,9 +44,9 @@ public static class MarkdownRenderer
 
     private static IEnumerable<Inline> RenderLine(
         string line,
-        FontFamily fontFamily,
+        System.Windows.Media.FontFamily fontFamily,
         double fontSize,
-        Brush fontColor)
+        System.Windows.Media.Brush fontColor)
     {
         var indentPrefix = string.Empty;
         var content = line;
@@ -78,9 +78,9 @@ public static class MarkdownRenderer
 
     private static IEnumerable<Inline> RenderInlineMarkdown(
         string text,
-        FontFamily fontFamily,
+        System.Windows.Media.FontFamily fontFamily,
         double fontSize,
-        Brush fontColor)
+        System.Windows.Media.Brush fontColor)
     {
         var index = 0;
         while (index < text.Length)
@@ -131,7 +131,7 @@ public static class MarkdownRenderer
         return boldMatch.Index <= italicMatch.Index ? boldMatch : italicMatch;
     }
 
-    private static Run CreateRun(string text, FontFamily fontFamily, double fontSize, Brush fontColor)
+    private static Run CreateRun(string text, System.Windows.Media.FontFamily fontFamily, double fontSize, System.Windows.Media.Brush fontColor)
     {
         return new Run(text)
         {
