@@ -13,7 +13,6 @@ public static class Constants
     public const double MinWidth = 150;
     public const double MinHeight = 100;
 
-    public const double LineHeight = 1.0;
     public const double CharacterSpacing = 0;
     public const double ListIndent = 14;
 

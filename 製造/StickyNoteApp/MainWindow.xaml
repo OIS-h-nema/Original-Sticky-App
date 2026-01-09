@@ -18,8 +18,6 @@
                       HorizontalScrollBarVisibility="Disabled">
             <TextBlock x:Name="ViewText"
                        TextWrapping="Wrap"
-                       LineHeight="{x:Static local:Constants.LineHeight}"
-                       LineStackingStrategy="BlockLineHeight"
                        MouseLeftButtonDown="OnViewMouseDown" />
         </ScrollViewer>
 
