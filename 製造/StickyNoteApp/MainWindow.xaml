@@ -1,0 +1,41 @@
+<Window x:Class="StickyNoteApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:StickyNoteApp"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        Topmost="False"
+        ResizeMode="NoResize"
+        MinWidth="{x:Static local:Constants.MinWidth}"
+        MinHeight="{x:Static local:Constants.MinHeight}"
+        Loaded="OnLoaded"
+        MouseLeftButtonDown="OnWindowMouseLeftButtonDown">
+    <Grid>
+        <ScrollViewer x:Name="ViewScroller"
+                      VerticalScrollBarVisibility="Hidden"
+                      HorizontalScrollBarVisibility="Disabled">
+            <TextBlock x:Name="ViewText"
+                       TextWrapping="Wrap"
+                       LineHeight="{x:Static local:Constants.LineHeight}"
+                       LineStackingStrategy="BlockLineHeight"
+                       MouseLeftButtonDown="OnViewMouseDown" />
+        </ScrollViewer>
+
+        <ScrollViewer x:Name="EditScroller"
+                      Visibility="Collapsed"
+                      VerticalScrollBarVisibility="Hidden"
+                      HorizontalScrollBarVisibility="Disabled">
+            <TextBox x:Name="EditText"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     LineHeight="{x:Static local:Constants.LineHeight}"
+                     LineStackingStrategy="BlockLineHeight"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     LostFocus="OnEditLostFocus"
+                     KeyDown="OnEditKeyDown" />
+        </ScrollViewer>
+    </Grid>
+</Window>
