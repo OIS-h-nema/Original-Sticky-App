@@ -44,14 +44,14 @@ public partial class MainWindow : Window
 
     private void ApplyFontSettings()
     {
-        FontFamily fontFamily;
+        System.Windows.Media.FontFamily fontFamily;
         try
         {
-            fontFamily = new FontFamily(_settings.FontFamily);
+            fontFamily = new System.Windows.Media.FontFamily(_settings.FontFamily);
         }
         catch
         {
-            fontFamily = new FontFamily(Constants.DefaultFontFamily);
+            fontFamily = new System.Windows.Media.FontFamily(Constants.DefaultFontFamily);
         }
 
         var fontSize = _settings.FontSize < 1 ? Constants.DefaultFontSize : _settings.FontSize;
@@ -93,7 +93,7 @@ public partial class MainWindow : Window
         SaveAndSwitchToViewMode();
     }
 
-    private void OnEditKeyDown(object sender, KeyEventArgs e)
+    private void OnEditKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
     {
         if (e.Key == Key.Escape)
         {
@@ -102,7 +102,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private void SwitchToEditMode(Point? caretPoint = null)
+    private void SwitchToEditMode(System.Windows.Point? caretPoint = null)
     {
         ViewScroller.Visibility = Visibility.Collapsed;
         EditScroller.Visibility = Visibility.Visible;
@@ -154,7 +154,7 @@ public partial class MainWindow : Window
         _settings.Y = Top;
     }
 
-    private static Brush? TryGetBrush(string colorValue)
+    private static System.Windows.Media.Brush? TryGetBrush(string colorValue)
     {
         try
         {

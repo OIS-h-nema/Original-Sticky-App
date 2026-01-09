@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace StickyNoteApp;
 
-public partial class App : Application
+public partial class App : System.Windows.Application
 {
     private NotifyIcon? _notifyIcon;
     private MainWindow? _mainWindow;
