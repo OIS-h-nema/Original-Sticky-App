@@ -30,8 +30,6 @@
             <TextBox x:Name="EditText"
                      AcceptsReturn="True"
                      TextWrapping="Wrap"
-                     LineHeight="{x:Static local:Constants.LineHeight}"
-                     LineStackingStrategy="BlockLineHeight"
                      Background="Transparent"
                      BorderThickness="0"
                      LostFocus="OnEditLostFocus"
