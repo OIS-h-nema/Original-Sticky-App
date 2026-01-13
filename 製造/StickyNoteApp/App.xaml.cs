@@ -1,14 +1,14 @@
 using System;
-using System.Drawing;
+using Drawing = System.Drawing;
 using System.IO;
 using System.Windows;
-using System.Windows.Forms;
+using Forms = System.Windows.Forms;
 
 namespace StickyNoteApp;
 
 public partial class App : System.Windows.Application
 {
-    private NotifyIcon? _notifyIcon;
+    private Forms.NotifyIcon? _notifyIcon;
     private MainWindow? _mainWindow;
     private AppSettings? _settings;
 
@@ -39,22 +39,22 @@ public partial class App : System.Windows.Application
     private void InitializeNotifyIcon()
     {
         var iconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "tray_icon.ico");
-        Icon icon;
+        Drawing.Icon icon;
         try
         {
-            icon = new Icon(iconPath);
+            icon = new Drawing.Icon(iconPath);
         }
         catch
         {
-            icon = SystemIcons.Application;
+            icon = Drawing.SystemIcons.Application;
         }
 
-        _notifyIcon = new NotifyIcon
+        _notifyIcon = new Forms.NotifyIcon
         {
             Icon = icon,
             Text = "StickyNote",
             Visible = true,
-            ContextMenuStrip = new ContextMenuStrip()
+            ContextMenuStrip = new Forms.ContextMenuStrip()
         };
 
         _notifyIcon.ContextMenuStrip.Items.Add("設定", null, OnSettingsClick);
