@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Media;
+using Media = System.Windows.Media;
 
 namespace StickyNoteApp;
 
@@ -25,12 +25,13 @@ public partial class SettingsWindow : Window
         WidthBox.Text = _workingCopy.Width.ToString(CultureInfo.InvariantCulture);
         HeightBox.Text = _workingCopy.Height.ToString(CultureInfo.InvariantCulture);
 
-        FontFamilyBox.ItemsSource = Fonts.SystemFontFamilies;
-        FontFamilyBox.SelectedItem = Fonts.SystemFontFamilies.FirstOrDefault(f => f.Source == _workingCopy.FontFamily);
+        FontFamilyBox.ItemsSource = Media.Fonts.SystemFontFamilies;
+        FontFamilyBox.SelectedItem = Media.Fonts.SystemFontFamilies.FirstOrDefault(
+            f => f.Source == _workingCopy.FontFamily);
         if (FontFamilyBox.SelectedItem is null)
         {
             _workingCopy.FontFamily = Constants.DefaultFontFamily;
-            FontFamilyBox.SelectedItem = Fonts.SystemFontFamilies.FirstOrDefault(
+            FontFamilyBox.SelectedItem = Media.Fonts.SystemFontFamilies.FirstOrDefault(
                 f => f.Source == _workingCopy.FontFamily);
         }
 
@@ -48,7 +49,7 @@ public partial class SettingsWindow : Window
         _workingCopy.Width = Math.Max(_workingCopy.Width, Constants.MinWidth);
         _workingCopy.Height = Math.Max(_workingCopy.Height, Constants.MinHeight);
 
-        if (FontFamilyBox.SelectedItem is FontFamily selectedFamily)
+        if (FontFamilyBox.SelectedItem is Media.FontFamily selectedFamily)
         {
             _workingCopy.FontFamily = selectedFamily.Source;
         }
@@ -97,12 +98,12 @@ public partial class SettingsWindow : Window
     {
         try
         {
-            var brush = (Brush)new BrushConverter().ConvertFromString(hexColor)!;
+            var brush = (Media.Brush)new Media.BrushConverter().ConvertFromString(hexColor)!;
             ColorPreview.Fill = brush;
         }
         catch
         {
-            ColorPreview.Fill = Brushes.Transparent;
+            ColorPreview.Fill = Media.Brushes.Transparent;
         }
     }
 }
