@@ -1,7 +1,9 @@
 using System;
 using System.Linq;
 using System.Windows;
-using System.Windows.Input;
+using WpfKey = System.Windows.Input.Key;
+using WpfKeyEventArgs = System.Windows.Input.KeyEventArgs;
+using WpfPoint = System.Windows.Point;
 using Media = System.Windows.Media;
 
 namespace StickyNoteApp;
@@ -93,16 +95,16 @@ public partial class MainWindow : Window
         SaveAndSwitchToViewMode();
     }
 
-    private void OnEditKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+    private void OnEditKeyDown(object sender, WpfKeyEventArgs e)
     {
-        if (e.Key == Key.Escape)
+        if (e.Key == WpfKey.Escape)
         {
             EditText.Text = _settings.Content;
             SwitchToViewMode();
         }
     }
 
-    private void SwitchToEditMode(System.Windows.Point? caretPoint = null)
+    private void SwitchToEditMode(WpfPoint? caretPoint = null)
     {
         ViewScroller.Visibility = Visibility.Collapsed;
         EditScroller.Visibility = Visibility.Visible;

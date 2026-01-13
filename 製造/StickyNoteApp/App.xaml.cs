@@ -1,18 +1,20 @@
 using System;
 using Drawing = System.Drawing;
 using System.IO;
-using System.Windows;
+using WpfApplication = System.Windows.Application;
+using WpfExitEventArgs = System.Windows.ExitEventArgs;
+using WpfStartupEventArgs = System.Windows.StartupEventArgs;
 using Forms = System.Windows.Forms;
 
 namespace StickyNoteApp;
 
-public partial class App : System.Windows.Application
+public partial class App : WpfApplication
 {
     private Forms.NotifyIcon? _notifyIcon;
     private MainWindow? _mainWindow;
     private AppSettings? _settings;
 
-    protected override void OnStartup(StartupEventArgs e)
+    protected override void OnStartup(WpfStartupEventArgs e)
     {
         base.OnStartup(e);
 
@@ -25,7 +27,7 @@ public partial class App : System.Windows.Application
         _mainWindow.Show();
     }
 
-    protected override void OnExit(ExitEventArgs e)
+    protected override void OnExit(WpfExitEventArgs e)
     {
         if (_settings is not null)
         {
