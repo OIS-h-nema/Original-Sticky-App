@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
+using Media = System.Windows.Media;
 
 namespace StickyNoteApp;
 
@@ -44,18 +44,18 @@ public partial class MainWindow : Window
 
     private void ApplyFontSettings()
     {
-        System.Windows.Media.FontFamily fontFamily;
+        Media.FontFamily fontFamily;
         try
         {
-            fontFamily = new System.Windows.Media.FontFamily(_settings.FontFamily);
+            fontFamily = new Media.FontFamily(_settings.FontFamily);
         }
         catch
         {
-            fontFamily = new System.Windows.Media.FontFamily(Constants.DefaultFontFamily);
+            fontFamily = new Media.FontFamily(Constants.DefaultFontFamily);
         }
 
         var fontSize = _settings.FontSize < 1 ? Constants.DefaultFontSize : _settings.FontSize;
-        var fontColor = TryGetBrush(_settings.FontColor) ?? TryGetBrush(Constants.DefaultFontColor) ?? Brushes.Black;
+        var fontColor = TryGetBrush(_settings.FontColor) ?? TryGetBrush(Constants.DefaultFontColor) ?? Media.Brushes.Black;
 
         ViewText.FontFamily = fontFamily;
         ViewText.FontSize = fontSize;
@@ -154,11 +154,11 @@ public partial class MainWindow : Window
         _settings.Y = Top;
     }
 
-    private static System.Windows.Media.Brush? TryGetBrush(string colorValue)
+    private static Media.Brush? TryGetBrush(string colorValue)
     {
         try
         {
-            return (Brush)new BrushConverter().ConvertFromString(colorValue)!;
+            return (Media.Brush)new Media.BrushConverter().ConvertFromString(colorValue)!;
         }
         catch
         {
